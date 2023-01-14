@@ -14,27 +14,43 @@ namespace FinalExam.Repositories
 
         public User AddNewUser(UserDto user)
         {
-            throw new NotImplementedException();
+            var newUser = new User
+            {
+                Username = user.UserName,
+                Password = user.Password,
+                Role = user.Role
+            };
+            _userContext.Users.Add(newUser);
+            _userContext.SaveChanges();
+            return newUser;
         }
 
         public User DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            var userToDelete = _userContext.Users.Single(x => x.Id == id);
+            _userContext.Users.Remove(userToDelete);
+            _userContext.SaveChanges(true);
+            return userToDelete;
         }
 
         public List<User> GetAll()
         {
-            throw new NotImplementedException();
+            return _userContext.Users.ToList();
         }
 
         public User GetByUserName(string userName)
         {
-            throw new NotImplementedException();
+            return _userContext.Users.Where(x => x.Username == userName).Single();
         }
 
         public User UpdateUser(string userName, UserDto user)
         {
-            throw new NotImplementedException();
+            var userToUpdate = _userContext.Users.Single(x => x.Username == userName);
+            userToUpdate.Username = userName;
+            userToUpdate.Password = user.Password;  
+            userToUpdate.Role = user.Role;
+            _userContext.SaveChanges();
+            return userToUpdate;
         }
     }
 }
