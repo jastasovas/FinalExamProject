@@ -10,5 +10,6 @@ namespace FinalExam.Dto_s
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string ProfilePicture { get; set; }
+        public int UserId { get; set; }
     }
 }

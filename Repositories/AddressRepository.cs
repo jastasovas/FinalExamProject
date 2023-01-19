@@ -19,7 +19,8 @@ namespace FinalExam.Repositories
                 City = address.City,
                 Street = address.Street,
                 HouseNumber = address.HouseNumber,
-                FlatNumber = address.FlatNumber
+                FlatNumber = address.FlatNumber,
+                HumanId = address.HumanId,
             };
             _addressContext.Addresses.Add(newAddress);
             _addressContext.SaveChanges();
@@ -50,6 +51,7 @@ namespace FinalExam.Repositories
             addressToUpdate.Street = address.Street;    
             addressToUpdate.HouseNumber = address.HouseNumber;
             addressToUpdate.FlatNumber = address.FlatNumber;
+            addressToUpdate.HumanId = address.HumanId;
             _addressContext.SaveChanges();
             return addressToUpdate;
         }

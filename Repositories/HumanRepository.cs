@@ -21,7 +21,8 @@ namespace FinalExam.Repositories
                 PersonalCode = human.PersonalCode,
                 PhoneNumber = human.PhoneNumber,
                 Email = human.Email,
-                ProfilePicture = human.ProfilePicture,  
+                ProfilePicture = human.ProfilePicture,
+                UserId = human.UserId,
             };
             _humanDbContext.Humans.Add(newHuman);
             _humanDbContext.SaveChanges();
