@@ -13,10 +13,10 @@ namespace FinalExam
                 .WithOne(fn => fn.User)
                 .HasForeignKey<Human>(fn => fn.UserId);
 
-            //modelBuilder.Entity<Human>()
-            //    .HasOne<Address>(a => a.Address)
-            //    .WithOne(ad => ad.Human)
-            //    .HasForeignKey<Address>(ad => ad.HumanId);
+            modelBuilder.Entity<Human>()
+                .HasOne<Address>(a => a.Address)
+                .WithOne(ad => ad.Human)
+                .HasForeignKey<Address>(ad => ad.HumanId);
         }
 
         public DbSet<User> Users { get; set; }  
