@@ -13,7 +13,7 @@ namespace FinalExam.Interfaces
         Human UpdatePersonalCode(int personalCode);
         Human UpdatePhoneNumber(string phoneNumber);
         Human UpdateEmail(string email);
-        Human UpdatePicture(byte[] profilePicture);
+        Human UpdatePicture(string profilePicture);
         Human DeleteHumanById(int id);
     }
 }

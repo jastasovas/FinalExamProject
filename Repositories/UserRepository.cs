@@ -16,7 +16,7 @@ namespace FinalExam.Repositories
         {
             var newUser = new User
             {
-                Username = user.UserName,
+                Username = user.Username,
                 Password = user.Password,
                 Role = user.Role
             };
@@ -29,7 +29,7 @@ namespace FinalExam.Repositories
         {
             var userToDelete = _userContext.Users.Single(x => x.Id == id);
             _userContext.Users.Remove(userToDelete);
-            _userContext.SaveChanges(true);
+            _userContext.SaveChanges();
             return userToDelete;
         }
 

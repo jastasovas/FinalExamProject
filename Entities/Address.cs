@@ -6,12 +6,11 @@ namespace FinalExam.Entities
     {
         public int Id { get; set; }
         
-        public int HumanId { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public int HouseNumber { get; set; }
         public int FlatNumber { get; set; }
-
-        public List<Human> Humans { get; set; } 
+        public int HumanId { get; set; }
+        public Human Human { get; set; }
     }
 }

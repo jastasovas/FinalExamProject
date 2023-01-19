@@ -6,30 +6,44 @@ namespace FinalExam.Repositories
 {
     public class HumanRepository : IHumanRepository
     {
-        private readonly UserDbContext _userDbContext;
-        public HumanRepository(UserDbContext userDbContext)
+        private readonly UserDbContext _humanDbContext;
+        public HumanRepository(UserDbContext humanDbContext)
         {
-            _userDbContext = userDbContext; 
+            _humanDbContext = humanDbContext; 
         }
 
         public Human AddNewHuman(HumanDto human)
         {
-            throw new NotImplementedException();
+            var newHuman = new Human
+            {
+                FirstName = human.FirstName,
+                LastName = human.LastName,
+                PersonalCode = human.PersonalCode,
+                PhoneNumber = human.PhoneNumber,
+                Email = human.Email,
+                ProfilePicture = human.ProfilePicture,  
+            };
+            _humanDbContext.Humans.Add(newHuman);
+            _humanDbContext.SaveChanges();
+            return newHuman;
         }
 
         public Human DeleteHumanById(int id)
         {
-            throw new NotImplementedException();
+            var humanToDelete = _humanDbContext.Humans.Single(h => h.Id == id);
+            _humanDbContext.Humans.Remove(humanToDelete);
+            _humanDbContext.SaveChanges();
+            return humanToDelete;
         }
 
         public List<Human> GetAllHumans()
         {
-            throw new NotImplementedException();
+            return _humanDbContext.Humans.ToList();
         }
 
         public Human GetHumanById(int id)
         {
-            throw new NotImplementedException();
+            return _humanDbContext.Humans.Where(x => x.Id == id).Single();
         }
 
         public Human UpdateEmail(string email)
@@ -57,7 +71,7 @@ namespace FinalExam.Repositories
             throw new NotImplementedException();
         }
 
-        public Human UpdatePicture(byte[] profilePicture)
+        public Human UpdatePicture(string profilePicture)
         {
             throw new NotImplementedException();
         }

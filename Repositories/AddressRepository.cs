@@ -14,27 +14,44 @@ namespace FinalExam.Repositories
 
         public Address AddNewAddress(AddressDto address)
         {
-            throw new NotImplementedException();
+            var newAddress = new Address
+            {
+                City = address.City,
+                Street = address.Street,
+                HouseNumber = address.HouseNumber,
+                FlatNumber = address.FlatNumber
+            };
+            _addressContext.Addresses.Add(newAddress);
+            _addressContext.SaveChanges();
+            return newAddress;
         }
 
         public Address DeleteAddress(int id)
         {
-            throw new NotImplementedException();
+            var addressToDelete = _addressContext.Addresses.Single(x => x.Id == id);
+            _addressContext.SaveChanges();
+            return addressToDelete;
         }
 
         public Address GetAddressById(int id)
         {
-            throw new NotImplementedException();
+            return _addressContext.Addresses.Where(a => a.Id == id).Single();
         }
 
         public List<Address> GetAddresses()
         {
-            throw new NotImplementedException();
+            return _addressContext.Addresses.ToList();
         }
 
         public Address UpdateAddress(int id, AddressDto address)
         {
-            throw new NotImplementedException();
+            var addressToUpdate = _addressContext.Addresses.Single(x => x.Id == id);
+            addressToUpdate.City = address.City;
+            addressToUpdate.Street = address.Street;    
+            addressToUpdate.HouseNumber = address.HouseNumber;
+            addressToUpdate.FlatNumber = address.FlatNumber;
+            _addressContext.SaveChanges();
+            return addressToUpdate;
         }
     }
 }
