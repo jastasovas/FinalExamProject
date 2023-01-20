@@ -43,6 +43,11 @@ namespace FinalExam.Repositories
             return _userContext.Users.Where(x => x.Username == userName).Single();
         }
 
+        public User GetUserByUnamePaswRole(string username, string password, string role)
+        {
+            return _userContext.Users.Where(x => x.Username == username).Single();
+        }
+
         public User UpdateUser(string userName, UserDto user)
         {
             var userToUpdate = _userContext.Users.Single(x => x.Username == userName);

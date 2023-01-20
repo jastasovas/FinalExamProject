@@ -23,9 +23,15 @@ namespace FinalExam.Controllers
 
         [HttpPost]
 
-        public Human AddNewHuman([FromQuery] HumanDto human)
+        public Human AddNewHuman([FromBody] HumanDto human)
         {
             return _humanRepository.AddNewHuman(human);
+        }
+
+        [HttpPut]
+        public Human UpdateHuman([FromQuery] int id, [FromBody] HumanDto human)
+        {
+            return _humanRepository.UpdateHuman(id, human);
         }
 
         [HttpDelete]

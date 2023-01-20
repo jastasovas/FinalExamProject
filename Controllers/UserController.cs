@@ -28,7 +28,7 @@ namespace FinalExam.Controllers
         }
 
         [HttpPost]
-        public User AddNewUser([FromQuery] UserDto user)
+        public User AddNewUser([FromBody] UserDto user)
         { 
             return _userRepository.AddNewUser(user);    
         }

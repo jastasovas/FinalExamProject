@@ -16,7 +16,7 @@ namespace FinalExam.Controllers
         }
 
         [HttpPost]
-        public Address AddNewAddress([FromQuery] AddressDto address)
+        public Address AddNewAddress([FromBody] AddressDto address)
         { 
             return _addressRepository.AddNewAddress(address);
         }

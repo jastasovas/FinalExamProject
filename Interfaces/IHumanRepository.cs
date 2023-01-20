@@ -8,6 +8,7 @@ namespace FinalExam.Interfaces
         List<Human> GetAllHumans();
         Human GetHumanById(int id);
         Human AddNewHuman(HumanDto human);
+        Human UpdateHuman(int id, HumanDto human);
         Human UpdateFirstName(string firstName);
         Human UpdateLastName(string lastName);
         Human UpdatePersonalCode(int personalCode);

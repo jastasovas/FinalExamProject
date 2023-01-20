@@ -47,6 +47,18 @@ namespace FinalExam.Repositories
             return _humanDbContext.Humans.Where(x => x.Id == id).Single();
         }
 
+        public Human UpdateHuman(int id, HumanDto human)
+        {
+            var humanToUpdate = _humanDbContext.Humans.Single(x => x.Id == id);
+            humanToUpdate.FirstName = human.FirstName;
+            humanToUpdate.LastName = human.LastName;    
+            humanToUpdate.PersonalCode = human.PersonalCode;
+            humanToUpdate.PhoneNumber = human.PhoneNumber;
+            humanToUpdate.Email = human.Email;
+            humanToUpdate.ProfilePicture = human.ProfilePicture;
+            _humanDbContext.SaveChanges();
+            return humanToUpdate;
+        }
         public Human UpdateEmail(string email)
         {
             throw new NotImplementedException();
@@ -56,6 +68,8 @@ namespace FinalExam.Repositories
         {
             throw new NotImplementedException();
         }
+
+        
 
         public Human UpdateLastName(string lastName)
         {
