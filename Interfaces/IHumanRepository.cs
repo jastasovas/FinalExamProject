@@ -9,12 +9,12 @@ namespace FinalExam.Interfaces
         Human GetHumanById(int id);
         Human AddNewHuman(HumanDto human);
         Human UpdateHuman(int id, HumanDto human);
-        Human UpdateFirstName(string firstName);
-        Human UpdateLastName(string lastName);
-        Human UpdatePersonalCode(int personalCode);
-        Human UpdatePhoneNumber(string phoneNumber);
-        Human UpdateEmail(string email);
-        Human UpdatePicture(string profilePicture);
+        Human UpdateFirstName(int id, HumanDto human);
+        Human UpdateLastName(int id, HumanDto human);
+        Human UpdatePersonalCode(int id, HumanDto human);
+        Human UpdatePhoneNumber(int id, HumanDto human);
+        Human UpdateEmail(int id, HumanDto human);
+        Human UpdatePicture(int id, HumanDto human);
         Human DeleteHumanById(int id);
     }
 }

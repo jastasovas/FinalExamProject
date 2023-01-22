@@ -34,7 +34,7 @@ namespace FinalExam.Controllers
         }
 
         [HttpDelete]
-        public User DeleteUser(int id)
+        public User DeleteUser( int id)
         { 
             return _userRepository.DeleteUser(id);
         }

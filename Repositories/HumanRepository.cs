@@ -9,7 +9,7 @@ namespace FinalExam.Repositories
         private readonly UserDbContext _humanDbContext;
         public HumanRepository(UserDbContext humanDbContext)
         {
-            _humanDbContext = humanDbContext; 
+            _humanDbContext = humanDbContext;
         }
 
         public Human AddNewHuman(HumanDto human)
@@ -29,14 +29,6 @@ namespace FinalExam.Repositories
             return newHuman;
         }
 
-        public Human DeleteHumanById(int id)
-        {
-            var humanToDelete = _humanDbContext.Humans.Single(h => h.Id == id);
-            _humanDbContext.Humans.Remove(humanToDelete);
-            _humanDbContext.SaveChanges();
-            return humanToDelete;
-        }
-
         public List<Human> GetAllHumans()
         {
             return _humanDbContext.Humans.ToList();
@@ -51,7 +43,7 @@ namespace FinalExam.Repositories
         {
             var humanToUpdate = _humanDbContext.Humans.Single(x => x.Id == id);
             humanToUpdate.FirstName = human.FirstName;
-            humanToUpdate.LastName = human.LastName;    
+            humanToUpdate.LastName = human.LastName;
             humanToUpdate.PersonalCode = human.PersonalCode;
             humanToUpdate.PhoneNumber = human.PhoneNumber;
             humanToUpdate.Email = human.Email;
@@ -59,36 +51,63 @@ namespace FinalExam.Repositories
             _humanDbContext.SaveChanges();
             return humanToUpdate;
         }
-        public Human UpdateEmail(string email)
+
+        public Human DeleteHumanById(int id)
         {
-            throw new NotImplementedException();
+            var humanToDelete = _humanDbContext.Humans.Single(h => h.Id == id);
+            _humanDbContext.Humans.Remove(humanToDelete);
+            _humanDbContext.SaveChanges();
+            return humanToDelete;
         }
 
-        public Human UpdateFirstName(string firstName)
+        public Human UpdateFirstName(int id, HumanDto human)
         {
-            throw new NotImplementedException();
+            var nameToUpdate = _humanDbContext.Humans.Single(x => x.Id == id);
+            nameToUpdate.FirstName = human.FirstName;
+            _humanDbContext.SaveChanges();
+            return nameToUpdate;
+        }
+
+        public Human UpdateLastName(int id, HumanDto human)
+        {
+            var lastNameToUpdate = _humanDbContext.Humans.Single(x => x.Id == id);
+            lastNameToUpdate.LastName = human.LastName;
+            _humanDbContext.SaveChanges();
+            return lastNameToUpdate;
+        }
+
+        public Human UpdatePersonalCode(int id, HumanDto human)
+        {
+            var codeToUpdate = _humanDbContext.Humans.Single(x => x.Id == id);
+            codeToUpdate.PersonalCode = human.PersonalCode;
+            _humanDbContext.SaveChanges();
+            return codeToUpdate;
+        }
+
+        public Human UpdatePhoneNumber(int id, HumanDto human)
+        {
+            var phoneToUpdate = _humanDbContext.Humans.Single(x => x.Id == id);
+            phoneToUpdate.PhoneNumber = human.PhoneNumber;
+            _humanDbContext.SaveChanges();
+            return phoneToUpdate;
+        }
+
+        public Human UpdateEmail(int id, HumanDto human)
+        {
+            var mailToUpdate = _humanDbContext.Humans.Single(x => x.Id == id);
+            mailToUpdate.Email = human.Email;
+            _humanDbContext.SaveChanges();
+            return mailToUpdate;
+        }
+
+        public Human UpdatePicture(int id, HumanDto human)
+        {
+            var pictureToUpdate = _humanDbContext.Humans.Single(x => x.Id == id);
+            pictureToUpdate.ProfilePicture = human.ProfilePicture;
+            _humanDbContext.SaveChanges();
+            return pictureToUpdate;
         }
 
         
-
-        public Human UpdateLastName(string lastName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Human UpdatePersonalCode(int personalCode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Human UpdatePhoneNumber(string phoneNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Human UpdatePicture(string profilePicture)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

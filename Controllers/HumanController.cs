@@ -17,12 +17,17 @@ namespace FinalExam.Controllers
 
         [HttpGet]
         public List<Human> GetAllHumans()
-        { 
+        {
             return _humanRepository.GetAllHumans();
         }
 
-        [HttpPost]
+        [HttpGet("id")]
+        public Human GetHumanById([FromQuery] int id)
+        {
+            return _humanRepository.DeleteHumanById(id);
+        }
 
+        [HttpPost]
         public Human AddNewHuman([FromBody] HumanDto human)
         {
             return _humanRepository.AddNewHuman(human);
@@ -40,10 +45,40 @@ namespace FinalExam.Controllers
             return _humanRepository.DeleteHumanById(id);
         }
 
-        [HttpGet("id")]
-        public Human GetHumanById([FromQuery] int id)
+        [HttpPut("change name")]
+        public Human UpdateFirstName([FromQuery] int id, [FromBody] HumanDto human)
         {
-            return _humanRepository.DeleteHumanById(id);
+            return _humanRepository.UpdateFirstName(id, human);
+        }
+
+        [HttpPut("change lastname")]
+        public Human UpdateLastName([FromQuery] int id, [FromBody] HumanDto human)
+        {
+            return _humanRepository.UpdateLastName(id, human);
+        }
+
+        [HttpPut("change personalcode")]
+        public Human UpdatePersonalCode([FromQuery] int id, [FromBody] HumanDto human)
+        {
+            return _humanRepository.UpdatePersonalCode(id, human);
+        }
+
+        [HttpPut("change phonenumber")]
+        public Human UpdatePhoneNumber([FromQuery] int id, [FromBody] HumanDto human)
+        {
+            return _humanRepository.UpdatePhoneNumber(id, human);
+        }
+
+        [HttpPut("change email")]
+        public Human UpdateEmail([FromQuery] int id, [FromBody] HumanDto human)
+        {
+            return _humanRepository.UpdateEmail(id, human);
+        }
+
+        [HttpPut("change picture")]
+        public Human UpdatePicture([FromQuery] int id, [FromBody] HumanDto human)
+        {
+            return _humanRepository.UpdatePicture(id, human);
         }
     }
 }

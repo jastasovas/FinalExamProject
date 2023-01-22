@@ -27,7 +27,7 @@ namespace FinalExam.Repositories
 
         public User DeleteUser(int id)
         {
-            var userToDelete = _userContext.Users.Single(x => x.Id == id);
+            var userToDelete = _userContext.Users.Where(x => x.Id == id).Single();
             _userContext.Users.Remove(userToDelete);
             _userContext.SaveChanges();
             return userToDelete;
@@ -39,8 +39,8 @@ namespace FinalExam.Repositories
         }
 
         public User GetByUserName(string userName)
-        {
-            return _userContext.Users.Where(x => x.Username == userName).Single();
+        {          
+            return _userContext.Users.Where(x => x.Username == userName).Single();        
         }
 
         public User GetUserByUnamePaswRole(string username, string password, string role)
